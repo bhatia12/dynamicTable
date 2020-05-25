@@ -5,7 +5,9 @@ import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 const TaskList = (props) => {
 	return(
 		props.taskList.map((val, idx) => {
+
 			let projectName = `projectName-${idx}`, task = `task-${idx}`, taskNotes = `taskNotes-${idx}`, taskStatus = `taskStatus-${idx}`
+			
 			return (
 				<tr key={val.index}>
 					<td>
@@ -27,8 +29,7 @@ const TaskList = (props) => {
 					</td>
 					<td>
 						{
-							idx===0?<button onClick={()=>props.add()} type="button" className="btn btn-primary text-center"><FontAwesomeIcon icon={faPlus} /></button>
-							:<button className="btn btn-danger" onClick={(() => props.delete(val))} ><FontAwesomeIcon icon={faMinus} /></button>
+							<button className="btn btn-danger" onClick={(() => props.delete(val))} ><FontAwesomeIcon icon={faMinus} /></button>
 						}
 					</td>
 				</tr>	

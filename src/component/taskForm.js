@@ -1,13 +1,11 @@
 import React from "react";
 import TaskList from "./taskList"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 class Form extends React.Component {
 	state = {
-		taskList: [{index: Math.random(), projectName: "", task: "", taskNotes:"", taskStatus:""}],
-		date: "",
-		description: "",	
+		taskList: [],	
 	}
 
 	handleChange = (e) => {
@@ -27,7 +25,7 @@ class Form extends React.Component {
 
 	addNewRow = (e) => {
 		this.setState((prevState) => ({
-			taskList: [...prevState.taskList, {index: Math.random(), projectName: "", task: "", taskNotes:"", taskStatus:""}]
+			taskList: [...prevState.taskList, {index: Math.random(), projectName: "", task: "", taskNotes:"", taskStatus:""}],
 		}));
 	}
 
@@ -38,9 +36,11 @@ class Form extends React.Component {
 	// }
 
 	clickOnDelete(record) {
-        this.setState({
-            taskList: this.state.taskList.filter(r => r !== record,)
-        });
+		if (window.confirm("Delete the item?")) {
+	        this.setState({
+	            taskList: this.state.taskList.filter(r => r !== record,)
+	        });
+    	}
     }
 
 
@@ -55,20 +55,6 @@ class Form extends React.Component {
                 			<div className="card">
                 				<div className="card-header text-center">Add Your Daily Task</div>
                 				<div className="card-body">
-                					<div className="row">
-                						<div className="col-sm-4">
-                							<div className="form-group">
-                								<label>Date</label>
-                								<input type="date" required name="date" id="date" className="form-control" placeholder="Enter Date"/>
-                							</div>
-                						</div>
-                						<div className="col-sm-4">
-                							<div className="form-group">
-                								<label>Description</label>
-                								<textarea name="description" id="description" className="form-control"></textarea>
-                							</div>
-                						</div>
-                					</div>
                 					<table className="table">
                                         <thead>
                                             <tr>
@@ -79,7 +65,7 @@ class Form extends React.Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <TaskList delete={this.clickOnDelete.bind(this)} add={this.addNewRow}taskList={taskList} />
+                                            <TaskList delete={this.clickOnDelete.bind(this)} taskList={taskList} />
                                         </tbody>
                                         <tfoot>
                                             <tr><td colSpan="4">

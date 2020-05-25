@@ -2,7 +2,7 @@
   "name": "dynamictable",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://github_bhatia12.github.io/dynamictable",
+  "homepage": "http://bhatia12.github.io/dynamicTable",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
