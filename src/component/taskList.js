@@ -1,17 +1,18 @@
 import React from 'react';
+import ContentEditable from 'react-contenteditable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const TaskList = (props) => {
 	return(
 		props.taskList.map((val, idx) => {
-
+			
 			let projectName = `projectName-${idx}`, task = `task-${idx}`, taskNotes = `taskNotes-${idx}`, taskStatus = `taskStatus-${idx}`
 			
 			return (
 				<tr key={val.index}>
 					<td>
-						<input type="text" required name="projectName" data-id={idx} id={projectName} className="form-control" />
+						<input type="text" required name="projectName" data-id={idx} className="form-control" />
 					</td>
 					<td>
 						<input type="text" required name="task" data-id={idx} id={task} className="form-control" />
@@ -28,9 +29,10 @@ const TaskList = (props) => {
 						</select>
 					</td>
 					<td>
-						{
-							<button className="btn btn-danger" onClick={(() => props.delete(val))} ><FontAwesomeIcon icon={faMinus} /></button>
-						}
+						<button type="submit" className="btn btn-success"><FontAwesomeIcon icon={faCheck} /></button>
+					</td>
+					<td>
+						<button className="btn btn-danger" onClick={(() => props.delete(val))} ><FontAwesomeIcon icon={faMinus} /></button>
 					</td>
 				</tr>	
 			)
