@@ -29,7 +29,8 @@ const TaskList = (props) => {
 						</select>
 					</td>
 					<td>
-						<button type="submit" className="btn btn-success"><FontAwesomeIcon icon={faCheck} /></button>
+					<button  className="btn btn-success" onClick={(() => props.add())}><FontAwesomeIcon icon={faCheck} /></button>
+
 					</td>
 					<td>
 						<button className="btn btn-danger" onClick={(() => props.delete(val))} ><FontAwesomeIcon icon={faMinus} /></button>
