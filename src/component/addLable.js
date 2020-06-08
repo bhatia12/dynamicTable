@@ -8,6 +8,7 @@ const AddLable = props => {
     return props.taskList.map((row) => {
     return (
           <Tr key={row.index}>
+                <Td></Td>
                 <Td>{row.projectName}</Td>
 		        <Td>{row.task}</Td>
 		    	<Td>{row.taskNotes}</Td>
